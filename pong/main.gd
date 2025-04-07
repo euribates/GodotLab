@@ -3,7 +3,7 @@ extends Node2D
 var score_player_one: int = 0
 var score_player_two: int = 0
 
-var speed_amplitude: float = 300.0
+var speed_amplitude: float = 400.0
 var ball_speed: Vector2
 var pad_speed: int = 160
 
@@ -17,14 +17,15 @@ func start_play():
 	print('start_play')
 	ball.position = Vector2(620, 350)
 	ball_speed = Vector2(620, randf_range(-350, 350)).normalized() * speed_amplitude
+	$Timer.start(1)
 
 func update_scores(to_player_one: int = 0, to_player_two: int = 0):
 	if to_player_one > 0:
 		score_player_one += to_player_one
-		$GUI/lbl_score_player_one.text = str(score_player_one)
+		$GUI/lbl_score_player_one.text = 'Score player one: ' + str(score_player_one)
 	if to_player_two > 0:
 		score_player_two += to_player_two
-		$GUI/lbl_score_player_two.text = str(score_player_two)
+		$GUI/lbl_score_player_two.text = 'Score player two: ' + str(score_player_two)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -77,7 +78,10 @@ func _on_left_out_area_entered(area: Area2D) -> void:
 	start_play()
 
 
-func _on_top_left_corner_child_entered_tree(node: Node) -> void:
+func ball_bounce(node: Node) -> void:
 	ball_speed.x = -ball_speed.x
-	ball_speed.rotated(randf_range(-0.03, 0.03))
-	
+
+
+func inc_speed() -> void:
+	speed_amplitude += 1
+	$GUI/lbl_speed_amplitude.text = 'Speed amplitud: ' + str(speed_amplitude)

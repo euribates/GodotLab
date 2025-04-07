@@ -19,7 +19,7 @@ size = Vector2(1359, 195)
 size = Vector2(33.5, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fos0i"]
-size = Vector2(106, 106)
+size = Vector2(70, 138)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_pniiv")
@@ -59,11 +59,11 @@ debug_color = Color(0.757742, 0.295798, 0.859254, 0.42)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalLimit"]
-position = Vector2(620, -67)
+position = Vector2(616, -63)
 shape = SubResource("RectangleShape2D_7bhdm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="VerticalLimit"]
-position = Vector2(618.5, 785.5)
+position = Vector2(619, 782)
 shape = SubResource("RectangleShape2D_7bhdm")
 
 [node name="PlayerOne" type="Area2D" parent="."]
@@ -91,10 +91,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_i8yi5")
 
 [node name="GUI" type="VBoxContainer" parent="."]
-offset_left = 1025.0
-offset_top = 540.0
-offset_right = 1138.0
-offset_bottom = 617.0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = 600.0
+offset_bottom = 684.0
 
 [node name="ball_speed_x" type="Label" parent="GUI"]
 layout_mode = 2
@@ -108,11 +108,19 @@ horizontal_alignment = 1
 
 [node name="lbl_score_player_one" type="Label" parent="GUI"]
 layout_mode = 2
-text = "0"
+text = "Score player one: 0"
+horizontal_alignment = 1
 
 [node name="lbl_score_player_two" type="Label" parent="GUI"]
 layout_mode = 2
-text = "0"
+text = "Socre player two: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl_speed_amplitude" type="Label" parent="GUI"]
+layout_mode = 2
+text = "Speed amplitude: 400"
+horizontal_alignment = 1
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(610, 360)
@@ -125,30 +133,31 @@ stream = ExtResource("5_fos0i")
 collision_mask = 2
 
 [node name="TopLeftCorner" type="CollisionShape2D" parent="LeftCorners"]
-position = Vector2(-21, 85)
+position = Vector2(-3.75, 70)
 shape = SubResource("RectangleShape2D_fos0i")
 
 [node name="BottomLeftCorner" type="CollisionShape2D" parent="LeftCorners"]
-position = Vector2(-21, 633)
+position = Vector2(-4, 649)
 shape = SubResource("RectangleShape2D_fos0i")
 
 [node name="RightCorners" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="TopLeftCorner" type="CollisionShape2D" parent="RightCorners"]
-position = Vector2(1246, 85)
+position = Vector2(1226, 69)
 shape = SubResource("RectangleShape2D_fos0i")
 
 [node name="BottomLeftCorner" type="CollisionShape2D" parent="RightCorners"]
-position = Vector2(1246, 633)
+position = Vector2(1226, 649)
 shape = SubResource("RectangleShape2D_fos0i")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="LeftOut" to="." method="_on_left_out_area_entered"]
 [connection signal="area_entered" from="RightOut" to="." method="_on_right_out_area_entered"]
 [connection signal="area_entered" from="VerticalLimit" to="." method="_on_vertical_exit"]
 [connection signal="area_entered" from="PlayerOne" to="." method="_on_pad_collision"]
 [connection signal="area_entered" from="PlayerTwo" to="." method="_on_pad_collision"]
-[connection signal="area_entered" from="LeftCorners" to="." method="_on_horizontal_exit"]
-[connection signal="child_entered_tree" from="LeftCorners/TopLeftCorner" to="." method="_on_top_left_corner_child_entered_tree"]
-[connection signal="area_entered" from="RightCorners" to="." method="_on_horizontal_exit"]
-[connection signal="child_entered_tree" from="RightCorners/TopLeftCorner" to="." method="_on_top_left_corner_child_entered_tree"]
+[connection signal="area_entered" from="LeftCorners" to="." method="ball_bounce"]
+[connection signal="area_entered" from="RightCorners" to="." method="ball_bounce"]
+[connection signal="timeout" from="Timer" to="." method="inc_speed"]
