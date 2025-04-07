@@ -52,10 +52,12 @@ func _draw():
 		2,
 		)
 	
-func _on_horizontal_exit(area: Area2D) -> void:
+func _on_pad_collision(area: Area2D) -> void:
 	$AudioPlayer.play()
 	ball_speed.x = -ball_speed.x
-	ball_speed.rotated(randf_range(-0.3, 0.3))
+	print("Antes:", ball_speed)
+	ball_speed = ball_speed.rotated(randf_range(-0.3, 0.3))
+	print("Después:", ball_speed)
 
 func _on_vertical_exit(area: Area2D) -> void:
 	print("_on_vertical_exit", area)
@@ -78,3 +80,4 @@ func _on_left_out_area_entered(area: Area2D) -> void:
 func _on_top_left_corner_child_entered_tree(node: Node) -> void:
 	ball_speed.x = -ball_speed.x
 	ball_speed.rotated(randf_range(-0.03, 0.03))
+	
