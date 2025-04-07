@@ -42,6 +42,15 @@ func _process(delta: float) -> void:
 	$GUI/ball_speed_y.text = 'ball_speed.y:' + str(ball_speed.y)
 	if Input.is_action_pressed('pause'):
 		get_tree().paused = not get_tree().paused
+	queue_redraw()
+	
+func _draw():
+	draw_line(
+		ball.position,
+		ball.position + ball_speed,
+		Color('#ffCCCC'), 
+		2,
+		)
 	
 func _on_horizontal_exit(area: Area2D) -> void:
 	$AudioPlayer.play()
