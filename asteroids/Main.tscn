@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl8x2bbb2fqqs"]
+
+[ext_resource type="Script" path="res://starship.gd" id="1_kog0a"]
+[ext_resource type="Texture2D" uid="uid://diccnmx7xrr88" path="res://fire.png" id="2_e7acf"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Starship" type="RigidBody2D" parent="."]
+position = Vector2(620, 360)
+mass = 1000.0
+gravity_scale = 0.0
+script = ExtResource("1_kog0a")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Starship"]
+polygon = PackedVector2Array(0, -20, -14, 8, 14, 8)
+
+[node name="Polygon2D" type="Polygon2D" parent="Starship"]
+antialiased = true
+polygon = PackedVector2Array(0, -20, -14, 8, 14, 8)
+
+[node name="FireSprite" type="Sprite2D" parent="Starship"]
+position = Vector2(0, 24)
+texture = ExtResource("2_e7acf")
