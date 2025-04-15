@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://gmdocpsv1yl0"]
+
+[ext_resource type="Script" uid="uid://rphswiiq05jr" path="res://main.gd" id="1_367qq"]
+[ext_resource type="Texture2D" uid="uid://oj1onojkxky4" path="res://FU11570lg.jpg" id="1_sg7su"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_367qq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_sg7su")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
