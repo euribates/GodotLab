@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxi5v00plbunb"]
+
+[ext_resource type="Script" uid="uid://epan3447kgii" path="res://moving_hazard.gd" id="1_4hbcv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tffm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hbcv"]
+albedo_color = Color(0.986187, 0.467078, 0.702391, 1)
+metallic = 1.0
+metallic_specular = 0.66
+roughness = 0.13
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_akx1y"]
+size = Vector3(3.00447, 1, 2.99388)
+
+[node name="MovingHazard" type="AnimatableBody3D"]
+script = ExtResource("1_4hbcv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_5tffm")
+surface_material_override/0 = SubResource("StandardMaterial3D_4hbcv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00405121, 0, 0.00905609)
+shape = SubResource("BoxShape3D_akx1y")

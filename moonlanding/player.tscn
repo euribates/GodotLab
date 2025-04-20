@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://w57jwufkwgbo"]
+[gd_scene load_steps=8 format=3 uid="uid://w57jwufkwgbo"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_fn1ws"]
+[ext_resource type="Script" uid="uid://dnhap3erlu5nk" path="res://player.gd" id="1_fn1ws"]
+[ext_resource type="AudioStream" uid="uid://8i4j4r1mph4x" path="res://SFX/Explosion.ogg" id="2_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://dmd0kcop85r8x" path="res://SFX/Success.ogg" id="3_hqtel"]
+[ext_resource type="AudioStream" uid="uid://vm17bfyre8d5" path="res://SFX/MainEngineThrust.ogg" id="4_hqtel"]
+[ext_resource type="PackedScene" path="res://booster_particles.tscn" id="5_sweqy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g26mh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o4osu"]
 
 [node name="Player" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -23,5 +26,17 @@ mesh = SubResource("CapsuleMesh_g26mh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_o4osu")
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_i3pqv")
+
+[node name="SuccessPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hqtel")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_hqtel")
+
+[node name="BoosterParticles" parent="." instance=ExtResource("5_sweqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
