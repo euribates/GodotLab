@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw0qlp7hqgney"]
+
+[ext_resource type="FontFile" uid="uid://tlidlocwn3t2" path="res://adamwarrenpro.ttf" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://c1ditf0hfmxoi" path="res://menu.gd" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://dsiy3em3ub5h2" path="res://counters.png" id="3_mae5d"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouk20")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.165
+anchor_bottom = 0.276
+offset_right = 1035.4
+offset_bottom = 516.28
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[node name="label" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 86
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.968627, 0.941176, 0.788235, 1)
+position = Vector2(620, 512)
+texture = ExtResource("3_mae5d")
+vframes = 4
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
