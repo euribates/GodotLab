@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl8x2bbb2fqqs"]
+[gd_scene load_steps=5 format=3 uid="uid://dl8x2bbb2fqqs"]
 
 [ext_resource type="Script" uid="uid://b58nnwno15oit" path="res://starship.gd" id="1_kog0a"]
 [ext_resource type="Texture2D" uid="uid://diccnmx7xrr88" path="res://fire.png" id="2_e7acf"]
 [ext_resource type="Texture2D" uid="uid://bwte5iwynx6ei" path="res://starship.svg" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://dswrbyns6wp6f" path="res://BigAsteroid.tscn" id="4_cm0pq"]
 
 [node name="Main" type="Node2D"]
 
@@ -20,3 +21,6 @@ texture = ExtResource("2_e7acf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Starship"]
 texture = ExtResource("3_r0du0")
+
+[node name="Node2D" parent="." instance=ExtResource("4_cm0pq")]
+position = Vector2(1018, 285)
