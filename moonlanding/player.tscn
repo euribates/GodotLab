@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://8i4j4r1mph4x" path="res://SFX/Explosion.ogg" id="2_i3pqv"]
 [ext_resource type="AudioStream" uid="uid://dmd0kcop85r8x" path="res://SFX/Success.ogg" id="3_hqtel"]
 [ext_resource type="AudioStream" uid="uid://vm17bfyre8d5" path="res://SFX/MainEngineThrust.ogg" id="4_hqtel"]
-[ext_resource type="PackedScene" path="res://booster_particles.tscn" id="5_sweqy"]
+[ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://booster_particles.tscn" id="5_sweqy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g26mh"]
 
