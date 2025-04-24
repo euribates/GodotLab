@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://n5kj8xadco0x"
 path.s3tc="res://.godot/imported/check-pattern.png-e71cebc9f05c62446e36609f96735f29.s3tc.ctex"
+path.etc2="res://.godot/imported/check-pattern.png-e71cebc9f05c62446e36609f96735f29.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://check-pattern.png"
-dest_files=["res://.godot/imported/check-pattern.png-e71cebc9f05c62446e36609f96735f29.s3tc.ctex"]
+dest_files=["res://.godot/imported/check-pattern.png-e71cebc9f05c62446e36609f96735f29.s3tc.ctex", "res://.godot/imported/check-pattern.png-e71cebc9f05c62446e36609f96735f29.etc2.ctex"]
 
 [params]
 
