@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var Bullets: PackedScene
+
 var lateral_rotation : float = 24000
 var impulse: float = 1250.0
 
@@ -9,11 +11,17 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("rotateLeft"):
 		apply_torque(-lateral_rotation * delta)
 	if Input.is_action_pressed("powerOn"):	
-		$FireSprite.visible = true
-		var arrow = Vector2.UP.rotated(self.rotation)
+		$Sprite2D.frame = 1
+		var arrow = Vector2.RIGHT.rotated(self.rotation)
 		apply_central_force(arrow * impulse * delta)
 	else:
-		$FireSprite.visible = false
+		$Sprite2D.frame = 0
+		
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_select"):
+		var bullet = Bullets.instantiate()
+		get_parent().add_child(bullet)
+		
 		
 func _integrate_forces(state):
 	if self.position.x < 0:
