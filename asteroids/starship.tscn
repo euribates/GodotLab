@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj6l2koxrcl0v"]
+
+[ext_resource type="Script" uid="uid://b58nnwno15oit" path="res://starship.gd" id="1_86p3r"]
+[ext_resource type="PackedScene" uid="uid://3tkt84bdeqok" path="res://laser.tscn" id="2_deqbx"]
+[ext_resource type="Texture2D" uid="uid://r8mmilo0uf1k" path="res://Images/starship.png" id="3_fb3fn"]
+
+[node name="Starship" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_86p3r")
+Bullets = ExtResource("2_deqbx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(20, 0, -18, -12, -18, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_fb3fn")
+hframes = 2
+
+[node name="Sight" type="Node2D" parent="."]
+position = Vector2(20, 0)

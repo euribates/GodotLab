@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @export var Bullets: PackedScene
 
+@onready var sight: Node2D = $Sight
+
 var lateral_rotation : float = 24000
 var impulse: float = 1250.0
 
@@ -20,6 +22,9 @@ func _physics_process(delta):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		var bullet = Bullets.instantiate()
+		bullet.position = sight.global_position
+		bullet.rotate(self.rotation)
+		bullet.direction = Vector2.RIGHT.rotated(self.rotation)
 		get_parent().add_child(bullet)
 		
 		

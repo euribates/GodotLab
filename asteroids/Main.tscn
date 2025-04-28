@@ -1,24 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8x2bbb2fqqs"]
+[gd_scene load_steps=3 format=3 uid="uid://dl8x2bbb2fqqs"]
 
-[ext_resource type="Script" uid="uid://b58nnwno15oit" path="res://starship.gd" id="1_kog0a"]
-[ext_resource type="PackedScene" uid="uid://3tkt84bdeqok" path="res://laser.tscn" id="2_cm0pq"]
-[ext_resource type="Texture2D" uid="uid://r8mmilo0uf1k" path="res://Images/starship.png" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cj6l2koxrcl0v" path="res://starship.tscn" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://dswrbyns6wp6f" path="res://BigAsteroid.tscn" id="4_cm0pq"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Starship" type="RigidBody2D" parent="."]
+[node name="Starship" parent="." instance=ExtResource("1_uu6xs")]
 position = Vector2(620, 360)
-gravity_scale = 0.0
-script = ExtResource("1_kog0a")
-Bullets = ExtResource("2_cm0pq")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Starship"]
-polygon = PackedVector2Array(20, 0, -18, -12, -18, 12)
-
-[node name="Sprite2D" type="Sprite2D" parent="Starship"]
-texture = ExtResource("2_r0du0")
-hframes = 2
 
 [node name="Node2D" parent="." instance=ExtResource("4_cm0pq")]
 position = Vector2(1018, 285)
