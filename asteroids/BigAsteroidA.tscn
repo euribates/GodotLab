@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dswrbyns6wp6f"]
+
+[ext_resource type="Script" uid="uid://desgoqgx4volj" path="res://big_asteroid.gd" id="1_8ccha"]
+[ext_resource type="Texture2D" uid="uid://bxner3iekt4y7" path="res://Images/asteroid-A.png" id="1_ph4q7"]
+
+[node name="BigAsteroidA" type="RigidBody2D" groups=["Rocks"]]
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_8ccha")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ph4q7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(23, 51, 52, 12, 32, -11, 58, -26, 31, -53, 0, -35, -26, -54, -52, -28, -37, 0, -51, 28, -27, 52, -13, 37)
