@@ -6,4 +6,3 @@
 
 [node name="Starship" parent="." instance=ExtResource("1_uu6xs")]
 position = Vector2(620, 360)
-angular_damp = 1.0

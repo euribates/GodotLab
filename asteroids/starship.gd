@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 @export var Bullets: PackedScene
 
@@ -52,20 +52,17 @@ func _process(delta: float) -> void:
 	else:
 		$Sprite2D.frame = 0
 		speed = Vector2.ZERO
-		
-func _integrate_forces(state):
-	print("_integrate_forces starts")
-	state.apply_torque(lateral_rotation)
-	state.apply_central_force(speed)
 
-	if self.position.x < -32:
+
+func _physics_process(delta: float) -> void:
+	self.position += speed * delta
+	self.rotate(lateral_rotation * delta)
+	if self.position.x < 0:
 		self.position.x = WIDTH
-	elif self.position.x > WIDTH + 32:
-		visible = false
-		move_and_collide(Vector2(-WIDTH, 0))
-		visible = true
+	elif self.position.x > WIDTH:
 		self.position.x = 0
-	if self.position.y < -32:
+	if self.position.y < 0:
 		self.position.y = HEIGHT
-	elif self.position.y > HEIGHT + 32:
+	elif self.position.y > HEIGHT:
 		self.position.y = 0
+	self.visible = true
