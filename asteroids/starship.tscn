@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://r8mmilo0uf1k" path="res://Images/starship.png" id="3_fb3fn"]
 
 [node name="Starship" type="RigidBody2D"]
+collision_mask = 4
 gravity_scale = 0.0
 script = ExtResource("1_86p3r")
 Bullets = ExtResource("2_deqbx")

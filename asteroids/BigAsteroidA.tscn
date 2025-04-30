@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bxner3iekt4y7" path="res://Images/asteroid-A.png" id="1_ph4q7"]
 
 [node name="BigAsteroidA" type="RigidBody2D" groups=["Rocks"]]
+collision_layer = 4
+collision_mask = 3
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_8ccha")

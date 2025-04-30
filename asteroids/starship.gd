@@ -4,8 +4,9 @@ extends RigidBody2D
 
 @onready var sight: Node2D = $Sight
 
-var big_asteroid_a = preload("res://BigAsteroidA.tscn")
-var big_asteroid_b = preload("res://BigAsteroidB.tscn")
+const BIG_ASTEROID_A = preload("res://BigAsteroidA.tscn")
+const BIG_ASTEROID_B = preload("res://BigAsteroidB.tscn")
+const BIG_ASTEROID_C = preload("res://BigAsteroidC.tscn")
 
 const MAX_FORCE : int = 225
 const MAX_LATERAL_ROTATION = 720.0
@@ -22,10 +23,15 @@ func _ready():
 	var viewport := get_viewport_rect()
 	WIDTH = viewport.size.x
 	HEIGHT = viewport.size.y
-	var a1 := big_asteroid_a.instantiate()
+	var a1 := BIG_ASTEROID_A.instantiate()
 	get_parent().add_child.call_deferred(a1)
-	var a2 := big_asteroid_b.instantiate()
+	
+	var a2 := BIG_ASTEROID_B.instantiate()
 	get_parent().add_child.call_deferred(a2)
+	
+	var a3 := BIG_ASTEROID_C.instantiate()
+	get_parent().add_child.call_deferred(a3)
+	
 		
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
