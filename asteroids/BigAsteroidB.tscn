@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://desgoqgx4volj" path="res://big_asteroid.gd" id="1_c51ir"]
 [ext_resource type="Texture2D" uid="uid://bmr6y5c5v38gj" path="res://Images/asteroid-B.png" id="2_c51ir"]
 
-[node name="BigAsteroidA" type="Area2D"]
+[node name="BigAsteroidB" type="Area2D" groups=["Rocks"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_c51ir")
@@ -11,5 +11,7 @@ script = ExtResource("1_c51ir")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_c51ir")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["Rocks"]]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(52, 25, 17, -1, 50, -12, 52, -25, 12, -54, -26, -52, -13, -25, -52, -26, -54, 16, -27, 53, 13, 41, 30, 51)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -9,14 +9,30 @@ const BIG_ASTEROID_B = preload("res://BigAsteroidB.tscn")
 const BIG_ASTEROID_C = preload("res://BigAsteroidC.tscn")
 
 const MAX_FORCE : int = 225
-const MAX_LATERAL_ROTATION = 720.0
+const MAX_LATERAL_ROTATION = 60 * PI / 180.0
 
-var WIDTH : int
-var HEIGHT : int
+var WIDTH : int = 1240
+var HEIGHT : int = 720
 
-var lateral_rotation : float = 0.0
-var force: float = 0.0
-var speed: Vector2 = Vector2.ZERO
+var direction: Vector2 = Vector2.RIGHT
+var speed : float = 0.0
+var acc : float = 1.0
+var force: Vector2 = Vector2.ZERO
+
+func _draw() -> void  :
+	var pos := self.position
+	self.draw_line(
+		Vector2(-5, 0),
+		Vector2(-5, 0),
+		Color.CORAL, 1.5, true
+		)
+	self.draw_line(
+		Vector2(0, -5),
+		Vector2(0, 5),
+		Color.CORAL, 1.5, true
+		)
+	self.draw_line(sight.position, direction * 100.0, Color.AQUA, 3.0, true)
+	self.queue_redraw()
 
 func _ready():
 	print("_ready starts")
@@ -41,28 +57,32 @@ func _process(delta: float) -> void:
 		bullet.direction = Vector2.RIGHT.rotated(self.rotation)
 		get_parent().add_child(bullet)
 	if Input.is_action_pressed("rotataRight"):
-		lateral_rotation = MAX_LATERAL_ROTATION
+		self.rotate(MAX_LATERAL_ROTATION * delta)
+		direction = direction.rotated(MAX_LATERAL_ROTATION * delta)
 	elif Input.is_action_pressed("rotateLeft"):
-		lateral_rotation = -MAX_LATERAL_ROTATION
-	else:
-		lateral_rotation = 0.0
+		self.rotate(-MAX_LATERAL_ROTATION * delta)
+		direction = direction.rotated(-MAX_LATERAL_ROTATION * delta)
 	if Input.is_action_pressed("powerOn"):	
 		$Sprite2D.frame = 1
-		speed = Vector2(MAX_FORCE, 0).rotated(self.rotation)
+		acc = 0.25 * delta
 	else:
 		$Sprite2D.frame = 0
-		speed = Vector2.ZERO
-
-
-func _physics_process(delta: float) -> void:
-	self.position += speed * delta
-	self.rotate(lateral_rotation * delta)
+		acc = 0.0
+		speed = 0.0
+	speed = speed + acc
+	force = force + (direction * speed)
+	self.position += force
+	
 	if self.position.x < 0:
+		self.visible = false
 		self.position.x = WIDTH
 	elif self.position.x > WIDTH:
+		self.visible = false
 		self.position.x = 0
 	if self.position.y < 0:
+		self.visible = false
 		self.position.y = HEIGHT
 	elif self.position.y > HEIGHT:
+		self.visible = false
 		self.position.y = 0
 	self.visible = true

@@ -13,9 +13,10 @@ var speed : float = 25.0
 func _on_body_entered(body: Node):
 	print("_on_body_entered starts")
 	print("Body:", body)
-	if body.is_in_group("Rocks"):
+	if body.is_in_group("Laser"):
 		print("BOOOM")
 		body.queue_free()
+		self.queue_free()
 	print("_on_body_entered ends")
 
 	
@@ -24,8 +25,8 @@ func _ready() -> void:
 	var viewport := get_viewport_rect()
 	WIDTH = viewport.size.x
 	HEIGHT = viewport.size.y
-	self.position.x = randi_range(0, WIDTH)
-	self.position.y = randi_range(0, HEIGHT)
+	self.position.x = randf_range(0, WIDTH)
+	self.position.y = randf_range(0, HEIGHT)
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, 2 * PI))
 	speed = randf_range(12.40, 37.60)
 	spin = randf_range(2.2, 7.3)
