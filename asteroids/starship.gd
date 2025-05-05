@@ -18,7 +18,7 @@ const SMALL_ASTEROID_B = preload("res://SmallAsteroidB.tscn")
 const SMALL_ASTEROID_C = preload("res://SmallAsteroidC.tscn")
 
 const MAX_FORCE : int = 225
-const MAX_LATERAL_ROTATION = 72 * PI / 180.0
+const MAX_LATERAL_ROTATION = 90 * PI / 180.0
 
 var WIDTH : int = 1240
 var HEIGHT : int = 720
@@ -50,7 +50,7 @@ func _draw() -> void:
 		Color.CHARTREUSE, 1.5, true
 		)
 	self.draw_line(Vector2(0, 0), direction * 60.0, Color.AQUA, 3.0, true)
-	self.queue_redraw()
+	
 
 func create_asteroid(pos: Vector2, klass: String, size: SIZES):
 	var ast: Variant
@@ -104,10 +104,10 @@ func _process(delta: float) -> void:
 		get_parent().add_child(bullet)
 	if Input.is_action_pressed("rotataRight"):
 		self.rotate(MAX_LATERAL_ROTATION * delta)
-		direction = Vector2.RIGHT.rotated(self.transform.get_rotation())
+		direction = Vector2.RIGHT.rotated(self.rotation)
 	elif Input.is_action_pressed("rotateLeft"):
 		self.rotate(-MAX_LATERAL_ROTATION * delta)
-		direction = Vector2.RIGHT.rotated(self.transform.get_rotation())
+		direction = Vector2.RIGHT.rotated(self.rotation)
 	if Input.is_action_pressed("powerOn"):	
 		$Sprite2D.frame = 1
 		acc = 0.25 * delta
@@ -119,18 +119,14 @@ func _process(delta: float) -> void:
 	force = force + (direction * speed)
 	self.position += force	
 	if self.position.x < 0:
-		self.visible = false
 		self.position.x = WIDTH
 	elif self.position.x > WIDTH:
-		self.visible = false
 		self.position.x = 0
 	if self.position.y < 0:
-		self.visible = false
 		self.position.y = HEIGHT
 	elif self.position.y > HEIGHT:
-		self.visible = false
 		self.position.y = 0
-	self.visible = true
+	self.queue_redraw()
 
 func _on_exploded(body: Area2D) -> void:
 	if body.is_big():
