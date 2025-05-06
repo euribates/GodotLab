@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfxor14208uhm"]
+
+[ext_resource type="Script" uid="uid://dvxx4f82m38ri" path="res://main.gd" id="1_glv2v"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_glv2v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="pbAcc" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Aceleración"
+
+[node name="pbParticles" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Partículas"
+
+[connection signal="pressed" from="VBoxContainer/pbAcc" to="." method="_on_acc_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/pbParticles" to="." method="_on_pb_particles_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dos8e4jhm7ekw"]
+
+[ext_resource type="Script" uid="uid://b8a8y083ckyh1" path="res://acc.gd" id="1_cilbf"]
+[ext_resource type="Texture2D" uid="uid://cmnjfcg17yhy1" path="res://icon.svg" id="1_v11mp"]
+
+[node name="Acc" type="Node2D"]
+script = ExtResource("1_cilbf")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("1_v11mp")
+
+[node name="lblSpeed" type="Label" parent="."]
+offset_right = 1148.0
+offset_bottom = 646.0
+text = "0.24389021414"
+horizontal_alignment = 2
+vertical_alignment = 2

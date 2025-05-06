@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdej14wvx36bw"]
+
+[ext_resource type="Script" uid="uid://ba30cb3lqrdhh" path="res://particles.gd" id="1_1nvrg"]
+[ext_resource type="Texture2D" uid="uid://cmnjfcg17yhy1" path="res://icon.svg" id="1_xnif8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1nvrg"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_i1ypt"]
+mesh = SubResource("BoxMesh_1nvrg")
+image_size = Vector2(8, 8)
+
+[node name="Particles" type="Node2D"]
+script = ExtResource("1_1nvrg")
+
+[node name="Emitter" type="Sprite2D" parent="."]
+position = Vector2(602, 360)
+texture = ExtResource("1_xnif8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Emitter"]
+texture = SubResource("MeshTexture_i1ypt")
+gravity = Vector2(0, 0)
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 298.0
+offset_bottom = 718.0
+
+[node name="GravityXSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 3.0
+offset_right = 206.0
+offset_bottom = 43.0
+ticks_on_borders = true
+
+[node name="GravityYSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 58.0
+offset_right = 206.0
+offset_bottom = 98.0
+ticks_on_borders = true
+
+[node name="lbl_x_gravity" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 65.0
+offset_bottom = 34.0
+text = "X Grav"
+
+[node name="lbl_y_gravity" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 65.0
+offset_right = 66.0
+offset_bottom = 88.0
+text = "Y  Grav"
+
+[connection signal="drag_ended" from="Panel/GravityXSlider" to="." method="_on_gravity_x_slder_drag_ended"]
+[connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_y_slider_drag_ended"]
+[connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_x_slder_drag_ended"]
