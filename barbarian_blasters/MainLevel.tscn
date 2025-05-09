@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx136x0u4pkq0"]
+[gd_scene load_steps=7 format=3 uid="uid://bx136x0u4pkq0"]
+
+[ext_resource type="MeshLibrary" uid="uid://bruyts1qvwkqp" path="res://MeshLibraries/SpaceLibrary.tres" id="1_jq6gy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rj4so"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -12,7 +14,11 @@ background_mode = 2
 sky = SubResource("Sky_jq6gy")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3cl4"]
+albedo_color = Color(0.00392157, 0.113725, 0.164706, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_rj4so"]
+material = SubResource("StandardMaterial3D_o3cl4")
 
 [node name="MainLevel" type="Node3D"]
 
@@ -30,4 +36,12 @@ transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_rj4so")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 15.14)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_jq6gy")
+cell_size = Vector3(4, 4, 4)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65475, 65470, 786433, 65502, 65481, 786433, 65534, 3, 524288, 65535, 3, 524288, 0, 3, 524288, 1, 3, 524288, 2, 3, 524288, 3, 3, 524288, 4, 3, 524288, 4, 2, 524288, 4, 1, 524288, 4, 0, 524288, 4, 65535, 524288, 4, 65534, 524288, 4, 65533, 524288, 2, 65533, 524288, 1, 65533, 524288, 0, 65533, 524288, 65535, 65533, 524288, 65534, 65533, 524288, 65533, 65533, 524288, 65532, 65533, 524288, 65532, 65534, 524288, 65532, 65535, 524288, 65532, 0, 524288, 65532, 1, 524288, 65532, 2, 524288, 65532, 3, 524288, 65532, 4, 524288, 65534, 4, 524288, 65535, 4, 524288, 0, 4, 524288, 1, 4, 524288, 2, 4, 524288, 3, 4, 524288, 4, 4, 524288, 65534, 65535, 524288, 65535, 65535, 524288, 0, 65535, 524288, 1, 65535, 524288, 2, 65535, 524288, 3, 65535, 524288, 65533, 1, 524288, 65534, 1, 524288, 65535, 1, 524288, 0, 1, 524288, 1, 1, 524288, 2, 1, 524288)
+}
