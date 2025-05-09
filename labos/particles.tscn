@@ -2,24 +2,42 @@
 
 [ext_resource type="Script" uid="uid://ba30cb3lqrdhh" path="res://particles.gd" id="1_1nvrg"]
 [ext_resource type="Texture2D" uid="uid://cmnjfcg17yhy1" path="res://icon.svg" id="1_xnif8"]
+[ext_resource type="Texture2D" uid="uid://dftp5h8hx3i8n" path="res://30 InDispersal4Step3.png" id="3_i1ypt"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_1nvrg"]
-
-[sub_resource type="MeshTexture" id="MeshTexture_i1ypt"]
-mesh = SubResource("BoxMesh_1nvrg")
-image_size = Vector2(8, 8)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i1ypt"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 7
+particles_anim_loop = false
 
 [node name="Particles" type="Node2D"]
 script = ExtResource("1_1nvrg")
-metadata/_edit_vertical_guides_ = [12.0]
+metadata/_edit_vertical_guides_ = [12.0, 275.0, 122.0]
 
 [node name="Emitter" type="Sprite2D" parent="."]
 position = Vector2(602, 360)
 texture = ExtResource("1_xnif8")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Emitter"]
-texture = SubResource("MeshTexture_i1ypt")
+material = SubResource("CanvasItemMaterial_i1ypt")
+texture = ExtResource("3_i1ypt")
+lifetime = 9.0
+explosiveness = 0.15
+randomness = 0.29
+lifetime_randomness = 0.1
+fixed_fps = 60
+direction = Vector2(1, 1)
+spread = 180.0
 gravity = Vector2(0, 0)
+initial_velocity_min = 13.25
+initial_velocity_max = 39.74
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_max = 3.0
+anim_speed_min = 1.7
+anim_speed_max = 5.94
+anim_offset_min = 0.011
+anim_offset_max = 0.0706
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 298.0
@@ -28,39 +46,161 @@ offset_bottom = 718.0
 [node name="GravityXSlider" type="HSlider" parent="Panel"]
 layout_mode = 0
 offset_left = 78.0
-offset_top = 3.0
-offset_right = 206.0
-offset_bottom = 43.0
-min_value = -50.0
-max_value = 50.0
-ticks_on_borders = true
+offset_top = 72.0
+offset_right = 275.0
+offset_bottom = 112.0
+tooltip_text = "0.0"
+min_value = -40.0
+max_value = 40.0
+tick_count = 10
 
 [node name="GravityYSlider" type="HSlider" parent="Panel"]
 layout_mode = 0
 offset_left = 78.0
-offset_top = 58.0
-offset_right = 206.0
-offset_bottom = 98.0
-min_value = -50.0
-max_value = 50.0
-ticks_on_borders = true
+offset_top = 127.0
+offset_right = 274.0
+offset_bottom = 167.0
+tooltip_text = "0.0"
+min_value = -40.0
+max_value = 40.0
+tick_count = 10
 
 [node name="lbl_x_gravity" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 11.0
+offset_top = 80.0
 offset_right = 64.0
-offset_bottom = 34.0
+offset_bottom = 103.0
+text = "X Grav"
+
+[node name="GravityXSlider2" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 424.0
+offset_right = 275.0
+offset_bottom = 464.0
+tooltip_text = "0.0"
+min_value = -40.0
+max_value = 40.0
+tick_count = 10
+
+[node name="lbl_x_velocity" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 432.0
+offset_right = 64.0
+offset_bottom = 455.0
 text = "X Grav"
 
 [node name="lbl_y_gravity" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 65.0
+offset_top = 134.0
 offset_right = 67.0
-offset_bottom = 88.0
+offset_bottom = 157.0
 text = "Y  Grav"
 
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 183.0
+offset_right = 77.0
+offset_bottom = 206.0
+text = "Lifetime"
+
+[node name="txt_lifetime" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 180.0
+offset_right = 275.0
+offset_bottom = 211.0
+text = "9.0"
+placeholder_text = "Tiempo de vida de las partículas"
+alignment = 2
+
+[node name="lbl_explosiveness" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 237.0
+offset_right = 120.0
+offset_bottom = 260.0
+text = "Explosiveness"
+
+[node name="lbl_randomness" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 296.0
+offset_right = 120.0
+offset_bottom = 319.0
+tooltip_text = "randomness"
+mouse_filter = 1
+text = "Randomness"
+
+[node name="ExplosivenesSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 242.0
+offset_right = 274.0
+offset_bottom = 258.0
+max_value = 1.0
+step = 0.025
+
+[node name="RandomnessSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 303.0
+offset_right = 274.0
+offset_bottom = 319.0
+max_value = 1.0
+step = 0.025
+
+[node name="lbl_amount" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 25.0
+offset_right = 79.0
+offset_bottom = 48.0
+text = "Amount"
+
+[node name="txt_amount" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 21.0
+offset_right = 274.0
+offset_bottom = 52.0
+alignment = 2
+
+[node name="txt_speed_scale" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 360.0
+offset_right = 273.0
+offset_bottom = 391.0
+alignment = 2
+
+[node name="lbl_speed_scale" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 360.0
+offset_right = 105.0
+offset_bottom = 383.0
+text = "Speed Scale"
+
+[node name="pb_restart" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 651.0
+offset_right = 274.0
+offset_bottom = 682.0
+text = "Restart"
+
 [connection signal="drag_ended" from="Panel/GravityXSlider" to="." method="_on_gravity_x_slder_drag_ended"]
-[connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_x_slder_drag_ended"]
 [connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_y_slider_drag_ended"]
+[connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_x_slder_drag_ended"]
+[connection signal="drag_ended" from="Panel/GravityXSlider2" to="." method="_on_gravity_x_slder_drag_ended"]
+[connection signal="text_changed" from="Panel/txt_lifetime" to="." method="_on_txt_lifetime_text_changed"]
+[connection signal="drag_ended" from="Panel/ExplosivenesSlider" to="." method="_on_explosivenes_slider_drag_ended"]
+[connection signal="drag_ended" from="Panel/RandomnessSlider" to="." method="_on_randomnes_slider_drag_ended"]
+[connection signal="text_changed" from="Panel/txt_amount" to="." method="_on_txt_amount_text_changed"]
+[connection signal="text_changed" from="Panel/txt_speed_scale" to="." method="_on_txt_amount_text_changed"]
+[connection signal="pressed" from="Panel/pb_restart" to="." method="_on_pb_restart_pressed"]
