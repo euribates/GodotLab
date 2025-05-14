@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3nui571opmxu"]
+
+[ext_resource type="Script" uid="uid://1458pdg7h3s4" path="res://base.gd" id="1_rpg24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5ejs"]
+albedo_color = Color(0.770899, 0, 0.115757, 1)
+
+[node name="Base" type="Node3D" groups=["base"]]
+script = ExtResource("1_rpg24")
+
+[node name="Cylinder" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+radius = 2.0
+height = 4.0
+sides = 24
+material = SubResource("StandardMaterial3D_g5ejs")

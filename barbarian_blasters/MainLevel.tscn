@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx136x0u4pkq0"]
+[gd_scene load_steps=11 format=3 uid="uid://bx136x0u4pkq0"]
 
 [ext_resource type="MeshLibrary" uid="uid://bruyts1qvwkqp" path="res://MeshLibraries/SpaceLibrary.tres" id="1_jq6gy"]
 [ext_resource type="PackedScene" uid="uid://cg4q8t1fhnuvg" path="res://Enemies/enemy.tscn" id="2_o3cl4"]
+[ext_resource type="PackedScene" uid="uid://c3nui571opmxu" path="res://base.tscn" id="3_fi62q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rj4so"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -20,6 +21,8 @@ albedo_color = Color(0.00392157, 0.113725, 0.164706, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rj4so"]
 material = SubResource("StandardMaterial3D_o3cl4")
+
+[sub_resource type="Environment" id="Environment_rlx2o"]
 
 [sub_resource type="Curve3D" id="Curve3D_jq6gy"]
 _data = {
@@ -44,7 +47,8 @@ transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_rj4so")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 15.14)
+transform = Transform3D(1, 0, 0, 0, 0.607376, 0.794415, 0, -0.794415, 0.607376, 0, 14.5, 20)
+environment = SubResource("Environment_rlx2o")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_jq6gy")
@@ -101,4 +105,9 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="Enemy" parent="Path3D" instance=ExtResource("2_o3cl4")]
-transform = Transform3D(0.999991, 0, 0.000332173, 0, 1, 0, -0.000332173, 0, 0.999991, -11.866, 1.2, 26.444)
+transform = Transform3D(0.999991, 0, 0.000329358, 0, 1, 0, -0.000329358, 0, 0.999991, -11.866, 1.2, 26.444)
+loop = false
+speed = 6.0
+
+[node name="Base" parent="." instance=ExtResource("3_fi62q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -12)
