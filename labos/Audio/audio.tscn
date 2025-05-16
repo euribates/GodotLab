@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c262n55rbipla"]
+
+[ext_resource type="Script" uid="uid://cuwyo0nhmxvav" path="res://Audio/audio.gd" id="1_1lysu"]
+[ext_resource type="AudioStream" uid="uid://dnmq26vnu6mb7" path="res://Audio/snare-drum-341273.mp3" id="2_1ihbr"]
+
+[node name="Audio" type="Node2D"]
+script = ExtResource("1_1lysu")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1ihbr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 614.0
+offset_top = 326.0
+offset_right = 666.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 120
+text = "AUDIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="pbDrum" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_constants/h_separation = 4
+theme_override_constants/line_spacing = 11
+button_mask = 5
+text = "Drum
+"
+
+[node name="pbLaser" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Laser"
+
+[connection signal="pressed" from="HBoxContainer/pbDrum" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/pbLaser" to="." method="_on_pb_laser_pressed"]

@@ -25,6 +25,11 @@ text = "Partículas"
 layout_mode = 2
 text = "Animaciones"
 
+[node name="pbAudio" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+
 [connection signal="pressed" from="VBoxContainer/pbAcc" to="." method="_on_acc_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/pbParticles" to="." method="_on_pb_particles_pressed"]
 [connection signal="pressed" from="VBoxContainer/pbAnimaciones" to="." method="_on_pb_animaciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/pbAudio" to="." method="_on_pb_audio_pressed"]

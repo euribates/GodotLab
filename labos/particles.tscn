@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba30cb3lqrdhh" path="res://particles.gd" id="1_1nvrg"]
 [ext_resource type="Texture2D" uid="uid://cmnjfcg17yhy1" path="res://icon.svg" id="1_xnif8"]
-[ext_resource type="Texture2D" uid="uid://dftp5h8hx3i8n" path="res://30 InDispersal4Step3.png" id="3_i1ypt"]
+[ext_resource type="Texture2D" uid="uid://dftp5h8hx3i8n" path="res://Audio/30 InDispersal4Step3.png" id="3_i1ypt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i1ypt"]
 particles_animation = true
