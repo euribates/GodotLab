@@ -21,5 +21,10 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Partículas"
 
+[node name="pbAnimaciones" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Animaciones"
+
 [connection signal="pressed" from="VBoxContainer/pbAcc" to="." method="_on_acc_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/pbParticles" to="." method="_on_pb_particles_pressed"]
+[connection signal="pressed" from="VBoxContainer/pbAnimaciones" to="." method="_on_pb_animaciones_pressed"]

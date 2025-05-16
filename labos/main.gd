@@ -10,3 +10,7 @@ func _on_acc_button_pressed() -> void:
 func _on_pb_particles_pressed() -> void:
 	get_tree().change_scene_to_packed(PARTICLES)
 	
+
+
+func _on_pb_animaciones_pressed() -> void:
+	pass # Replace with function body.
