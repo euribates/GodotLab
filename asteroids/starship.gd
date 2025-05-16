@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 enum SIZES {BIG, MEDIUM, SMALL}
 
+signal asteroid_explosion(points: int)
+
 @export var Bullets: PackedScene
 @onready var sight: Node2D = $Sight
 
-const BIG_ASTEROID_A = preload("res://BigAsteroidA.tscn")
+@onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
+
+const  BIG_ASTEROID_A = preload("res://BigAsteroidA.tscn")
 const BIG_ASTEROID_B = preload("res://BigAsteroidB.tscn")
 const BIG_ASTEROID_C = preload("res://BigAsteroidC.tscn")
 
@@ -36,9 +40,7 @@ func get_random_position() -> Vector2:
 	return Vector2(x, y)
 
 func _draw() -> void:
-	print('_draw starts')
 	var pos := self.position
-	print('pos:', pos)
 	self.draw_line(
 		Vector2(-25, 0),
 		Vector2(25, 0),
@@ -129,10 +131,15 @@ func _process(delta: float) -> void:
 	self.queue_redraw()
 
 func _on_exploded(body: Area2D) -> void:
+	audio_player.play()
 	if body.is_big():
+		emit_signal("asteroid_explosion", 40)
 		for klass in ['A', 'B', 'C']:
 			create_asteroid(body.position, klass, SIZES.MEDIUM)
 	elif body.is_medium():
+		emit_signal("asteroid_explosion", 12)
 		for klass in ['A', 'B', 'C']:
 			create_asteroid(body.position, klass, SIZES.SMALL)
+	else:
+		emit_signal("asteroid_explosion", 4)
 	body.queue_free()

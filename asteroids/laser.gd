@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
+
 const MARGIN : int = 100
 
 var MIN_WIDTH: int = -MARGIN
@@ -14,6 +16,7 @@ func _ready() -> void:
 	var viewport := get_viewport_rect()
 	MAX_WIDTH = viewport.size.x + MARGIN
 	MAX_HEIGHT = viewport.size.y + MARGIN
+	audio_player.play()	
 		
 func _process(delta: float) -> void:
 	position += direction * SPEED * delta

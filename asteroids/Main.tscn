@@ -1,8 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl8x2bbb2fqqs"]
+[gd_scene load_steps=3 format=3 uid="uid://dl8x2bbb2fqqs"]
 
+[ext_resource type="Script" uid="uid://d1gijiah8xd58" path="res://main.gd" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://cj6l2koxrcl0v" path="res://starship.tscn" id="1_uu6xs"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_r0du0")
 
 [node name="Starship" parent="." instance=ExtResource("1_uu6xs")]
 position = Vector2(620, 360)
+
+[node name="FlowContainer" type="FlowContainer" parent="."]
+offset_right = 1239.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="FlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="lblScore" type="Label" parent="FlowContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "0"
+
+[connection signal="asteroid_explosion" from="Starship" to="." method="_on_starship_asteroid_explosion"]
