@@ -195,8 +195,8 @@ offset_bottom = 682.0
 text = "Restart"
 
 [connection signal="drag_ended" from="Panel/GravityXSlider" to="." method="_on_gravity_x_slder_drag_ended"]
-[connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_y_slider_drag_ended"]
 [connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_x_slder_drag_ended"]
+[connection signal="drag_ended" from="Panel/GravityYSlider" to="." method="_on_gravity_y_slider_drag_ended"]
 [connection signal="drag_ended" from="Panel/GravityXSlider2" to="." method="_on_gravity_x_slder_drag_ended"]
 [connection signal="text_changed" from="Panel/txt_lifetime" to="." method="_on_txt_lifetime_text_changed"]
 [connection signal="drag_ended" from="Panel/ExplosivenesSlider" to="." method="_on_explosivenes_slider_drag_ended"]

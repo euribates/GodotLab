@@ -109,5 +109,29 @@ transform = Transform3D(0.999991, 0, 0.000329358, 0, 1, 0, -0.000329358, 0, 0.99
 loop = false
 speed = 6.0
 
+[node name="Enemy2" parent="Path3D" instance=ExtResource("2_o3cl4")]
+transform = Transform3D(0.997741, 0, 0.0670426, 0, 1, 0, -0.0670426, 0, 0.997741, -12.0516, 1.2, 23.9512)
+progress = 2.5
+loop = false
+speed = 6.0
+
+[node name="Enemy3" parent="Path3D" instance=ExtResource("2_o3cl4")]
+transform = Transform3D(0.99861, 0, 0.0525343, 0, 1, 0, -0.0525343, 0, 0.99861, -12.2016, 1.2, 21.4556)
+progress = 5.0
+loop = false
+speed = 6.0
+
+[node name="Enemy4" parent="Path3D" instance=ExtResource("2_o3cl4")]
+transform = Transform3D(0.999438, 0, 0.0332573, 0, 1, 0, -0.0332573, 0, 0.999438, -12.3104, 1.2, 18.9579)
+progress = 7.5
+loop = false
+speed = 6.0
+
+[node name="Enemy5" parent="Path3D" instance=ExtResource("2_o3cl4")]
+transform = Transform3D(0.999989, 0, 0.00200952, 0, 1, 0, -0.00200952, 0, 0.999989, -12.3583, 1.2, 16.4583)
+progress = 10.0
+loop = false
+speed = 6.0
+
 [node name="Base" parent="." instance=ExtResource("3_fi62q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -12)

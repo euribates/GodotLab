@@ -7,8 +7,7 @@ extends PathFollow3D
 
 func _process(delta: float) -> void:
 	self.progress += speed * delta
-	if self.progress_ratio > 0.9:
-		print(self.progress_ratio)
 	if self.progress_ratio == 1.0:
 		base.take_damage()
+		self.set_process(false)
 	

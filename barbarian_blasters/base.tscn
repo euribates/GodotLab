@@ -14,3 +14,10 @@ radius = 2.0
 height = 4.0
 sides = 24
 material = SubResource("StandardMaterial3D_g5ejs")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.44017, 0)
+billboard = 1
+text = "000"
+font_size = 500
+outline_size = 80
